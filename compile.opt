@@ -1,0 +1,5 @@
+#!/bin/sh
+FILES="moon_type.ml moon_stack.ml moon_lex.ml moon_prim.ml moon_parser.ml \
+	moon_vm.ml moon_main.ml"
+ocamllex moon_lex.mll
+ocamlopt -c $FILES

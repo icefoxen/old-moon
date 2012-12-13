@@ -1,0 +1,5 @@
+#!/bin/sh
+FILES="moon_type.cmo moon_stack.cmo moon_lex.cmo moon_prim.cmo \
+	moon_parser.cmo moon_vm.cmo"
+ocamlc -a -o moon.cma $FILES
+ocamlc -o moon moon.cma moon_main.cmo

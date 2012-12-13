@@ -1,0 +1,5 @@
+#!/bin/sh
+FILES="moon_type.cmx moon_stack.cmx moon_lex.cmx moon_prim.cmx \
+	moon_parser.cmx moon_vm.cmx"
+ocamlopt -a -o moon.cmxa $FILES
+ocamlopt -o moon moon.cmxa moon_main.cmx

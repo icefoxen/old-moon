@@ -1,0 +1,14 @@
+
+all: moon;
+
+moon: moon_lex.cmo moon_main.cmo moon_parser.cmo moon_prim.cmo moon_stack.cmo
+moon_vm.cmo
+{
+   echo Foo;
+   ocamlc *.cmo;
+}
+
+%0.cmo: %0.ml
+{
+   ocamlc -c %0;
+}

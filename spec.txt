@@ -1,0 +1,64 @@
+Okay, this is Moonshine, a homebrewed scripting language.  I'm doing this
+'cause Scheme is heavyweight in all the wrong areas, and Lua is wiggy to interface with.
+
+I'm hijacking this to be a simple interpreted language for embedding.  Woohoo!
+
+It's Scheme-y in syntax and design.
+Simple data types: List, string, int (MAYBE also float), func, bool.
+Maybe also table.
+Static scope, either interpreted or possibly compiled into Ocaml or some
+bytecode, operates on a stack-based interpreter.
+Namespaces?  Probably.
+
+Well, either it compiles to bytecode, or a defined function is just a list of
+lists and symbols and a function call just traverses the list.  The latter is
+simpler, the former is a bit faster.  I don't know much about writing
+bytecodes though.
+
+Just a few basic interpreter operations: push, pop, assign (value to key in
+hashtable or on stack), funcall, conditional/unconditional jump, move
+Local vars are just let on the stack.
+
+Maybe have an "external" type, for extension...
+
+
+Keep in mind:  Compile to bytecode if the parsing overhead gets too high!
+Bytecode...  It would need a data segment and a text segment and a header.
+Each instruction would be one byte and possibly a one-word arg.
+So there's the stack and the hashtable.  The bytecode loader.  The standard
+library.  The compiler.
+
+The language should be tailored to fit it's purpose!  So what exactly am I
+going to do with this?
+
+Move things
+Change their properties (hitpoints, sprites, etc)
+Create things (animations, shots, etc)
+Destroy things
+Do good AI
+Make good configuration lists
+
+
+
+Bytecode operations would be:
+PUSHVAR		dat
+PUSHLIT		dat
+POP
+
+SETGLOBAL
+GETGLOBAL	idx
+
+CALLPRIM
+CALLFUNC
+RETURN
+
+TABLESET	idx
+TABLEGET	idx
+CONS
+CAR
+CDR
+
+
+Header: magic number, data offset, text offset, function names/offsets/args
+Data -seperated by types?
+Text
